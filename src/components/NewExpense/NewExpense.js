@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import DefaultView from "./DefaultView";
 import ExpenseForm from "./ExpenseForm";
 import "./NewExpense.css";
 
