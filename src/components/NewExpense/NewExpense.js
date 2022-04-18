@@ -1,5 +1,5 @@
-import React from 'react';
-
+import React, { useState } from 'react';
+import DefaultView from './DefaultView';
 import ExpenseForm from './ExpenseForm';
 import './NewExpense.css';
 
@@ -12,9 +12,23 @@ const NewExpense = (props) => {
     props.onAddExpense(expenseData);
   }
 
-  return <div className='new-expense'>
-    <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} />
-  </div>
-}
+  const [activateAddNewExpenseView, setActivateAddNewExpenseView] = useState(false);
+
+  const viewAddNewExpense = (toggle) => {
+    setActivateAddNewExpenseView(toggle);
+  };
+
+  if (!activateAddNewExpenseView) {
+    return <div className='new-expense'>
+      <DefaultView onViewAddNewExpense={viewAddNewExpense}/>
+    </div>
+  }
+
+  return (
+    <div className='new-expense'>
+      <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} onViewAddNewExpense={viewAddNewExpense} />
+    </div>
+  );
+};
 
 export default NewExpense;
