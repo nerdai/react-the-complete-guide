@@ -52,7 +52,7 @@ const ExpenseForm = (props) => {
     event.preventDefault(); // prevents default behaviour of reloading the page
     const expenseData = {
       title: enteredTitle,
-      amount: enteredAmount,
+      amount: +enteredAmount,
       date: new Date(enteredDate),
     };
 
