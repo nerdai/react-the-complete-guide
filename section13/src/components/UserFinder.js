@@ -1,7 +1,9 @@
 import { Fragment, Component } from "react";
-import UsersContext from "../store/users-context";
 
+import ErrorBoundary from "./ErrorBoundary";
+import UsersContext from "../store/users-context";
 import Users from "./Users";
+import classes from "./UserFinder.module.css";
 
 class UserFinder extends Component {
   static contextType = UsersContext; // can only set static contextType property once
@@ -37,8 +39,12 @@ class UserFinder extends Component {
   render() {
     return (
       <Fragment>
-        <input type="search" onChange={this.searchChangeHandler.bind(this)} />
-        <Users users={this.state.filteredUsers} />
+        <div className={classes.finder}>
+          <input type="search" onChange={this.searchChangeHandler.bind(this)} />
+        </div>
+        <ErrorBoundary>
+          <Users users={this.state.filteredUsers} />
+        </ErrorBoundary>
       </Fragment>
     );
   }
