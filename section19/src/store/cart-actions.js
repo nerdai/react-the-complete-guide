@@ -5,21 +5,24 @@ export const fetchCartData = () => {
   return async (dispatch) => {
     const fetchData = async () => {
       const response = await fetch(
-        "https://react-http-3f961-default-rtdb.firebaseio.com/cart.json"  
+        "https://react-http-3f961-default-rtdb.firebaseio.com/cart.json"
       );
 
       if (!response.ok) {
-        throw new Error('Could not fetch cart data');
+        throw new Error("Could not fetch cart data");
       }
 
       const data = await response.json();
 
       return data;
-    }
+    };
 
     try {
       const cartData = await fetchData();
-      dispatch(cartActions.replaceCart(cartData));
+      dispatch(cartActions.replaceCart({
+        items: cartData.items || [],
+        totalQuantity: cartData.totalQuantity
+      }));
     } catch (error) {
       dispatch(
         uiActions.showNotification({
@@ -29,8 +32,8 @@ export const fetchCartData = () => {
         })
       );
     }
-  }
-}
+  };
+};
 
 export const sendCartData = (cart) => {
   return async (dispatch) => {
@@ -47,7 +50,10 @@ export const sendCartData = (cart) => {
         "https://react-http-3f961-default-rtdb.firebaseio.com/cart.json",
         {
           method: "PUT",
-          body: JSON.stringify(cart),
+          body: JSON.stringify({
+            items: cart.items,
+            totalQuantity: cart.totalQuantity,
+          }),
         }
       );
 
@@ -66,7 +72,6 @@ export const sendCartData = (cart) => {
           message: "Sent cart data successfully",
         })
       );
-
     } catch (error) {
       sendCartData().catch((error) => {
         dispatch(
@@ -76,7 +81,7 @@ export const sendCartData = (cart) => {
             message: "Sending cart data failed",
           })
         );
-      });  
+      });
     }
   };
 };

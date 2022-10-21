@@ -1,12 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { uiActions } from "./ui-slice";
-
 const cartSlice = createSlice({
   name: "cart",
   initialState: {
     items: [],
     totalQuantity: 0,
+    changed: false,
   },
   reducers: {
     replaceCart(state, action) {
@@ -30,6 +29,7 @@ const cartSlice = createSlice({
       }
 
       state.totalQuantity++;
+      state.changed = true;
     },
     removeItemFromCart(state, action) {
       const id = action.payload;
@@ -42,6 +42,7 @@ const cartSlice = createSlice({
       }
 
       state.totalQuantity--;
+      state.changed = true;
     },
   },
 });
