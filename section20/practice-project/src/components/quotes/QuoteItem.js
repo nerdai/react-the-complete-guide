@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import classes from './QuoteItem.module.css';
 
 const QuoteItem = (props) => {
