@@ -30,4 +30,12 @@ function HomePage() {
   );
 }
 
+// this code is executed here on server
+export async function getStaticProps() {
+  // fetch data from an API
+  return {
+    props: {}
+  };
+}
+
 export default HomePage;
