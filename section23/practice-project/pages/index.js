@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import MeetupList from "../components/meetups/MeetupList";
 
 const DUMMY_MEETUPS = [
@@ -18,15 +17,9 @@ const DUMMY_MEETUPS = [
   },
 ];
 
-function HomePage() {
-  const [loadedMeetups, setLoadedMeetups] = useState([]);
-  useEffect(() => {
-    // send http request
-    setLoadedMeetups(DUMMY_MEETUPS);
-  }, []);
-
+function HomePage(props) {
   return (
-      <MeetupList meetups={loadedMeetups} />
+      <MeetupList meetups={props.meetups} />
   );
 }
 
@@ -34,7 +27,9 @@ function HomePage() {
 export async function getStaticProps() {
   // fetch data from an API
   return {
-    props: {}
+    props: {
+      meetups: DUMMY_MEETUPS     
+    }
   };
 }
 
