@@ -23,27 +23,28 @@ function HomePage(props) {
   );
 }
 
-export async function getServerSideProps(context) {
-  const req = context.req;
-  const res = context.res;
-  // fetch data from an API
-  // this will run on server
-  return {
-    props: {
-      meetups: DUMMY_MEETUPS
-    }
-  };
-}
-
-// // this code is executed here on server
-// export async function getStaticProps() {
+// export async function getServerSideProps(context) {
+//   const req = context.req;
+//   const res = context.res;
+//   
 //   // fetch data from an API
+//   // this will run on server
 //   return {
 //     props: {
-//       meetups: DUMMY_MEETUPS     
-//     },
-//     revalidate: 1
+//       meetups: DUMMY_MEETUPS
+//     }
 //   };
 // }
+
+// this code is executed here on server
+export async function getStaticProps() {
+  // fetch data from an API
+  return {
+    props: {
+      meetups: DUMMY_MEETUPS     
+    },
+    revalidate: 1
+  };
+}
 
 export default HomePage;
