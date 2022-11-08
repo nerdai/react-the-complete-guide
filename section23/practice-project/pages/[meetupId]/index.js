@@ -12,4 +12,22 @@ function MeetupDetails() {
   );
 }
 
+export async function getStaticProps(context) {
+  // fetch data for a single meetup
+  const meetupId = context.params.meetupId;
+
+  return {
+    props: {
+      meetupData: {
+        image: "https://d3p2634vqbf9ci.cloudfront.net/8_iai%20pets_78.png",
+        id: meetupId,
+        title: "A First Meetup",
+        address: "Some Stree 5, Some City",
+        description: "The meetup description" 
+      }
+    }
+  }
+
+};
+
 export default MeetupDetails;
