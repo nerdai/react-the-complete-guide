@@ -12,6 +12,24 @@ function MeetupDetails() {
   );
 }
 
+export async function getStaticPaths() {
+  return {
+    fallback: false,
+    paths: [
+      {
+        params: {
+          meetupId: "m1",
+        },
+      },
+      {
+        params: {
+          meetupId: "m2",
+        },
+      },
+    ],
+  };
+}
+
 export async function getStaticProps(context) {
   // fetch data for a single meetup
   const meetupId = context.params.meetupId;
@@ -23,11 +41,10 @@ export async function getStaticProps(context) {
         id: meetupId,
         title: "A First Meetup",
         address: "Some Stree 5, Some City",
-        description: "The meetup description" 
-      }
-    }
-  }
-
-};
+        description: "The meetup description",
+      },
+    },
+  };
+}
 
 export default MeetupDetails;
