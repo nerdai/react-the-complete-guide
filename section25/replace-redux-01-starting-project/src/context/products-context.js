@@ -6,7 +6,6 @@ export const ProductsContext = React.createContext({
   toggleFav: (id) => {},
 });
 
-// testing
 const ProductsContextProvider = (props) => {
   const [productsList, setProductsList] = useState([
     {
