@@ -32,11 +32,24 @@ describe("<Greeting />", () => {
     render(<Greeting />);
 
     // Act
-    const buttonElement = screen.getByRole('button');
-    userEvent.click(buttonElement)
+    const buttonElement = screen.getByRole("button");
+    userEvent.click(buttonElement);
 
     // Assert
     const outputElement = screen.getByText("Changed!");
     expect(outputElement).toBeInTheDocument();
+  });
+
+  test("doesn't render it's good to see you", () => {
+    // Arrange
+    render(<Greeting />);
+
+    // Act
+    const buttonElement = screen.getByRole("button");
+    userEvent.click(buttonElement);
+
+    // Assert
+    const outputElement = screen.queryByText("It's good to see you.");
+    expect(outputElement).toBeNull();
   });
 });
