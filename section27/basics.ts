@@ -41,3 +41,9 @@ let people: {
 let course = 'React - The Complete Guide';
 
 // course = 12341; // by default it tries to infer type as much as possible
+
+// union types
+
+let courseUnion: string | number = 'React - The Complete Guide';
+
+courseUnion = 12341; // this works now without error
