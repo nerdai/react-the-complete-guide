@@ -35,3 +35,9 @@ let people: {
   name: string;
   age: number
 }[];
+
+// type inference
+
+let course = 'React - The Complete Guide';
+
+// course = 12341; // by default it tries to infer type as much as possible
