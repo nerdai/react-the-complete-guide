@@ -31,10 +31,13 @@ person = {
   age: 32
 };
 
-let people: {
-  name: string;
-  age: number
-}[];
+// type alias
+type Person = {
+  name: 'Max',
+  age: 32
+};
+
+let people: Person[];
 
 // type inference
 
