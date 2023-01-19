@@ -50,3 +50,14 @@ let course = 'React - The Complete Guide';
 let courseUnion: string | number = 'React - The Complete Guide';
 
 courseUnion = 12341; // this works now without error
+
+// Functions & types
+
+function add(a: number, b: number): number {
+  return a +b;
+}
+
+// void function
+function printOutput(s: any) {
+  console.log(s);
+}
