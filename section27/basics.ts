@@ -61,3 +61,14 @@ function add(a: number, b: number): number {
 function printOutput(s: any) {
   console.log(s);
 }
+
+// Generics
+
+function insertAtBeginning(array: any[], value: any) {
+  const newArray = [value, ...array];
+  return newArray;
+}
+
+const demoArray = [1, 2, 3];
+
+const updatedArray = insertAtBeginning(demoArray, -1);
