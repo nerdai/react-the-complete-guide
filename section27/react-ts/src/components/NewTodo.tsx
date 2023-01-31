@@ -8,6 +8,11 @@ const NewTodo = () => {
     event.preventDefault();
 
     const enteredText = todoTextInputRef.current!.value;
+
+    if (enteredText.trim().length === 0) {
+        // throw error
+        return;
+    }
   };
 
   return (
